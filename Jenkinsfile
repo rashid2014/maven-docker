@@ -21,7 +21,7 @@ pipeline {
                 sh '''
                 cd my-maven-docker-project
                 echo "Building Docker"
-                docker build -t java-image:v1 .
+                docker build -t java-image:${env.BUILD_ID} .
                 '''
                 
             }
