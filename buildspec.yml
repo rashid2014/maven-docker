@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - cd my-maven-docker-project
+      - mvn clean install
+  post_build:
+    commands:
+      - echo "Build Completed Successfully"
+      - ls -l target/
+      - docker build -t my-maven-docker-project.jar .
+      - docker images
+      
+artifacts:
+  files:
+    - "my-maven-docker-project/target/*.jar"
+  discard-paths: yes
